@@ -1,0 +1,9 @@
+Ecmascript -> especificación para crear un lenguaje de scripting.
+	      Los navegadores utilizan ECMAScript para interpretar código Javascript
+Ecmascript dicta las reglas, detalles y lineamientos que un lenguaje de scripting debe seguir para ser considerado por ecmascript
+
+Transpilar -> compilar
+Javascript -> lenguaje de scripting que sigue la especificación de ecmascript. js es el lenguaje en el que programamos mientras que ecmascript son las especificaciones que los lenguajes debe seguir
+
+NPM -> gran cantidad de librerías que se pueden utilizar con node JS
+

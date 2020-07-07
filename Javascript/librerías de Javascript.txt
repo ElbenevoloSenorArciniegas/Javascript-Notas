@@ -1,0 +1,13 @@
+Librería -> Conjunto de funcionalidades que resuelven una tarea en específico
+
+1. Moment.js -> para manejar fechas 
+2. Hammer.js -> Para hacer gestos con los elementos del DOM (deslizar pantalla, hacer zoom).
+	       es para la aplicación web. js ya lo hace, pero con esta librería es más fácil
+3. Draggable.js -> para hacer drag and drop de manera fácil (ej hacer una aplicación tipo trello, para arrastrar elementos)
+4. Axios.js -> hacer peticiones http por medio de una url fácilmente
+5. chart.js -> para hacer gráficos en js (ej dashboards). se puede utilizar con websockets
+6. video.js -> crear un reproductor de video completamente personalizable. se pueden agregar plugins (ej un plugin para agregar subtitulos)
+7. codemirror -> para agregar un editor de código
+9. Immer -> inmutabilidad. para menejar datos inmutables (que nunca se modifican, solo retornan otro nuevo dato sin modificar el original)
+10. Redux -> para mantener un estado global de la aplicación (estado -> cambios. una fotografía de un momento de la aplicación)
+11. ramda -> usa el paradigma de programación funcional, para hacer funciones sobre funciones de manera fácil
