@@ -1,18 +1,22 @@
-//template literals o string template
+//Arreglo de objetos
 
-const producto1 = 'pizza',
-    precio1 = 30,
-    producto2 = 'hamburguesa',
-    precio2 = 40;
+const autos= [
+	{modelo: 'Mustang', motor: 6.0},
+	{modelo: 'Camaro', motor: 6.1},
+	{modelo: 'Challenger', motor: 6.3}
+];
 
-let html;
+console.log(autos);
+console.log(autos[0].modelo);
 
-//la forma antigua de hacer html y mostrarlo en una componente de html 
+//recorrido
 
-html = '<ul>' +
-    '<li> Orden: ' + producto1 + '</li>' +
-    '<li> Precio: ' + precio1 + '</li>' +
-    '<li> Orden: ' + producto2 + '</li>' +
-    '<li> Precio: ' + precio2 + '</li>';
+for(let i = 0; i < autos.length; i++){
+	console.log(autos[i]);
+	console.log(`${autos[i].modelo} ${autos[i].motor}`);
 
-document.getElementById('app').innerHTML = html;
+}
+
+//aunque el objeto sea const, se pueden modificar sus índices individualmente
+autos[0].modelo = 'Audi';
+console.log(autos)
