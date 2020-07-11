@@ -4,7 +4,7 @@ function requestHandler(req, res){
     /* ej de una consulta a mongo */
     /* esta function (callback) va a esperar por la respuesta de la consulta a la bd, tiene como parametros un posible 
     error, o el usuario(en el caso de que la consulta sea exitosa) */
-    User.finById(req.userId, function(err, user){
+    User.findById(req.userId, function(err, user){
         /* escribir cualquier codigo que dependa de esta consulta */
         if(err){
             res.send(err);
