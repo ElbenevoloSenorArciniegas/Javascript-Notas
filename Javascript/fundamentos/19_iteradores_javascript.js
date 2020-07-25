@@ -14,7 +14,7 @@ console.log(datos);
 
 //for(let entrada of ciudades.entries()){
 //	console.log(entrada); //cada una de las iteraciones retorna un array con el indice 
-						  //y el elemento
+//y el elemento
 //}
 
 //Entries para los sets
@@ -33,7 +33,7 @@ console.log(datos);
 
 //for(let entrada of ciudades.values()){
 //	console.log(entrada); //cada una de las iteraciones retorna un array con el indice 
-						  //y el elemento
+//y el elemento
 //}
 
 //esto es lo mismo a lo que hice anteriormente
@@ -73,18 +73,18 @@ console.log(datos);
 
 //Default iterador
 
-for(let entrada of ciudades){
-	console.log(entrada); 
+for (let entrada of ciudades) {
+    console.log(entrada);
 }
 
 const mensaje = 'Aprendiendo Javascript';
 
-for(let i = 0; i< mensaje.length; i++) console.log(mensaje[i]);
+for (let i = 0; i < mensaje.length; i++) console.log(mensaje[i]);
 
 //hacer lo mismo con for por default
 
-for(let letra of mensaje){
-	console.log(letra);
+for (let letra of mensaje) {
+    console.log(letra);
 }
 
 //usar iteradores para recorrer elements en el html
@@ -92,7 +92,7 @@ for(let letra of mensaje){
 
 const enlaces = document.getElementsByTagName('a');
 
-for(let enlace of enlaces){
-	console.log(enlace);
-	console.log(enlace.href);
+for (let enlace of enlaces) {
+    console.log(enlace);
+    console.log(enlace.href);
 }
