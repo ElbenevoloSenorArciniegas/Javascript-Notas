@@ -1,4 +1,4 @@
-//EL object create es una nueva forma de crear un objeto (ecmascript 5)
+//EL object create es una nueva forma de crear un objeto (Ecmascript 5)
 
 const Cliente = {
 

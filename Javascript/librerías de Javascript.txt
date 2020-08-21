@@ -11,3 +11,7 @@ Librería -> Conjunto de funcionalidades que resuelven una tarea en específico
 9. Immer -> inmutabilidad. para menejar datos inmutables (que nunca se modifican, solo retornan otro nuevo dato sin modificar el original)
 10. Redux -> para mantener un estado global de la aplicación (estado -> cambios. una fotografía de un momento de la aplicación)
 11. ramda -> usa el paradigma de programación funcional, para hacer funciones sobre funciones de manera fácil
+
+--------------------------------------------------------------------------------
+
+JSONPlaceholder -> una REST API falsa, para hacer pruebas y prototipos

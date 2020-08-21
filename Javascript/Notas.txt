@@ -7,3 +7,31 @@ Javascript -> lenguaje de scripting que sigue la especificación de ecmascript. 
 
 NPM -> gran cantidad de librerías que se pueden utilizar con node JS
 
+JSON -> Javascript Object Notation
+
+API -> application programming interface. Funciones, métodos que ofrece una librería para ser utilizada por otro software como una capa de abstracción. Para acceder a este servicio hay que enviar una petición estructurada. ej. google maps API
+
+REST -> representational State transfer
+
+REST API'S -> Pueden ser diseñadas en cualquier lenguaje, REST describe como deben ponerse a disposición los recursos. la API debe responder a los request de HTTP(GET, POST, PUT, PATCH DELETE). cada API tiene sus propias reglas, métodos, estructuras.
+
+Enpoints -> en una REST API, un endpoint, es una url que permite realizar operaciones CRUD
+
+ ejemplo  GET  /clientes    -> listar todos los clientes
+					GET  /clientes/10 -> obtener un solo cliente
+					POST /clientes    -> crear un nuevo cliente
+					PUT  /clientes/3  -> editar un cliente
+					DELETE /clientes/8 -> borrar un cliente
+
+Código síncrono -> una línea no se puede ejecutar hasta que la linea anterior se haya ejecutadom completamente
+
+Código asíncrono -> una línea puede ejecutarse antes de que la línea 1 se haya ejecutado, dependiendo del procedimiento que haga. será común escribir código asíncrono cuando se intaractúe con una API o una REST API.
+
+	- funciones de js para ejecutar código asíncrono:
+	   * callbacks
+		 * promises
+		 * async await
+
+
+
+
