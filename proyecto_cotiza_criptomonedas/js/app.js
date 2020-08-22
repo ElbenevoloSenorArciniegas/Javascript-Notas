@@ -22,11 +22,19 @@ formulario.addEventListener('submit', (event) => {
         //arrojar la alerta de error
         ui.mostrar_mensaje('Ambos campos son obligatorios', 'alert bg-danger text-center');
     } else {
+
+        ui.mostrar_spinner();
         //consultar la api para generar el balance de esa criptomoneda
         api.obtener_valores_cripto(moneda, cripto)
             .then(data => {
-                console.log(data.respuesta);
-                ui.mostrar_resultado(data.respuesta, moneda, cripto);
+                //p(data.resultado);
+                
+                //hacer la simulación de una carga de datos
+                setTimeout(() => {
+                    ui.ocultar_spinner();
+                    ui.mostrar_resultado(data.resultado.RAW, moneda, cripto);
+                }, 2000);
+                
             });
     }
 

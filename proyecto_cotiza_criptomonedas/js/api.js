@@ -26,10 +26,10 @@ class API {
 
         //consultar en rest API
         const url_convertir = await fetch(url);
-        const respuesta = url_convertir.json().RAW;
+        const resultado = await url_convertir.json();
 
         return {
-            respuesta
+            resultado
         };
     }
 }

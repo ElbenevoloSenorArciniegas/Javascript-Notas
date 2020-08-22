@@ -35,3 +35,6 @@ console.log(dia_hoy.getTime());
 //Modificar alguno de los anteriores parámetros
 dia_hoy.setFullYear(2016);
 console.log(dia_hoy.getFullYear());
+
+//Conversion de fechas al formato local
+//fecha.toLocaleDateString('es-CO');

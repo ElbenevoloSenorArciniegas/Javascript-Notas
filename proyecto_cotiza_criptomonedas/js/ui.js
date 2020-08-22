@@ -50,5 +50,47 @@ class Interfaz {
 
     mostrar_resultado = (resultado, moneda, criptomoneda) => {
         //console.log(resultado);
+        const datos_moneda_cripto = resultado[criptomoneda][moneda];
+
+        //recortar digitos de precio
+        let precio = datos_moneda_cripto.PRICE.toFixed(2);
+
+        //como se va a mostrar la ultima fecha de actualización de la moneda, en el resultado se muestra ese valor como un timestamp de unix, y hay que convertir eso hacia una fecha
+        let fecha_ultima_actualizacion = new Date(datos_moneda_cripto.LASTUPDATE * 1000).toLocaleDateString('es-CO');
+
+        //construir el template para mostrar el resultado
+        let template_html = `
+            <div class = "card bg-warning">
+                <div class = "card-body text-light">
+                    <h2 class="card-title">Resultado:</h2>
+                    <p>El precio de ${datos_moneda_cripto.FROMSYMBOL} a moneda ${datos_moneda_cripto.TOSYMBOL} es de: $${precio}</p>
+
+                    <p>Variación del ultimo día: ${datos_moneda_cripto.CHANGEPCTDAY}</p>
+
+                    <p>Ultima actualización: ${fecha_ultima_actualizacion}</p>
+                </div>
+            </div>
+        `;
+
+        //insertar el ressultado en el dom
+        document.querySelector('#resultado').innerHTML = template_html;
+    }
+
+    //mostrar y ocultar spinner de carga alenviar la cotización
+    mostrar_spinner = () => {
+
+        //limpiar info de anteriores consultas
+        const resultado_anterior = document.querySelector('#resultado > div');
+        if(resultado_anterior){
+            resultado_anterior.remove();
+        }
+        
+        const spinner = document.querySelector('.contenido-spinner');
+        spinner.style.display = 'block';
+    }
+
+    async ocultar_spinner () {
+        const spinner = document.querySelector('.contenido-spinner');
+        spinner.style.display = 'none';
     }
 }
