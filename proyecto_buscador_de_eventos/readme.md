@@ -1,0 +1,1 @@
+La versión free de la API dura 5 días.
