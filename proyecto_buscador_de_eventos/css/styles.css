@@ -1,20 +1,19 @@
-html, body {
-    min-height: 100%;
-    position: relative;
+.contenido {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
 }
+
 .texto-info {
     font-weight: bold;
     margin-top: 30px;
- }
-.contenido{
-    padding-bottom: 100px;
 }
+
 footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    align-self: flex-end;
     color: white;
+    line-height: 3;
+    width: 100%;
+    text-align: center;
 }
-
-
