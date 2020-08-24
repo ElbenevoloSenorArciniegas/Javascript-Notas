@@ -1,5 +1,5 @@
 //instanciar ambas clases
-const evenbrite = new EventBrite();
+const api = new API();
 const ui = new Interfaz(); // al inicializar consulta la API para listar categorías
 
 document.getElementById('buscarBtn').addEventListener('click', (event) => {
@@ -13,11 +13,15 @@ document.getElementById('buscarBtn').addEventListener('click', (event) => {
 
     //console.log(texto_buscador + " " + categoria_seleccionada);
 
-    //revisar campos obligatorios
-    if (texto_buscador !== '') {
-        //cuando si hay una busqueda
-        evenbrite.consultar_eventos(texto_buscador, categoria_seleccionada);
-    } else {
-        ui.mostrar_mensaje('alert alert-danger mt-4', 'Debes escribir el nombre del evento o la ciudad del evento');
-    }
+    //cuando si hay una busqueda
+    api.consultar_eventos(texto_buscador, categoria_seleccionada)
+        .then(respuesta => {
+            if (respuesta.eventos.page.totalElements > 0) {
+
+                ui.mostrar_eventos(respuesta.eventos._embedded.events);
+            } else {
+                //mostrar alert de que no hay resultados
+                ui.mostrar_mensaje('alert alert-danger mt-4', 'No hay resultados referentes a tu búsqueda');
+            }
+        });
 });
