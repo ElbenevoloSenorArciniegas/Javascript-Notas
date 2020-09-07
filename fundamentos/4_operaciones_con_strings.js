@@ -25,3 +25,10 @@ console.log(mensaje2.includes('lenguaje'));
 
 /* repetir un valor */
 console.log(tecnologia.repeat(10));
+
+//Eliminar espacios al inicio y al final
+const producto = " monitor 20 pulgadas";
+console.log(producto.trimStart()); //eliminar espacios al inicio
+console.log(producto.trimEnd()); //eliminar espacios al final
+
+// usando

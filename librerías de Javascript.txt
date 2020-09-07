@@ -15,3 +15,16 @@ Librería -> Conjunto de funcionalidades que resuelven una tarea en específico
 --------------------------------------------------------------------------------
 
 JSONPlaceholder -> una REST API falsa, para hacer pruebas y prototipos
+
+--------------------------------------------------------------------------------
+
+ESLint -> es una herramienta que ayuda a solucionar problemas en tu codigo. Se puede instalar con un gestor de dependencias (como NPM).
+
+	En tu raiz del proyecto creas un archivo (eslintrc.json) para agregarle configuraciones (por ejemplo, que en los archivos js siempre sea obligatorio agregarle ; entre otros...).
+	
+	Para hacer uso de la herramienta consola escribes el comando 
+	$ eslint <ruta_archivo_js>, y liste los errores, en caso de que existan, en la consola escribes el comando 
+	$ eslint <ruta_archivo_js>
+
+	Para que revise e inmediatamente corrija los errores
+	$ eslint <ruta_archivo_js> --fix
