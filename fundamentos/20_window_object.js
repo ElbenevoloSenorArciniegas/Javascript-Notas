@@ -1,13 +1,13 @@
+//js ya cuenta con mas de 4000 funciones listas para usar (del core)
 //Window object es la ventana del navegador web
 
-//window almacena todas las propiedades de la ventana del usuario y desde ahí una aplicación 
-//puede acceder a su info para darle sugerencias como en lapublicidad, o también puede 
-//conocer el tipo de dispositivo y SO que usa el user para la versión de una aplicación que 
+//window almacena todas las propiedades de la ventana del usuario y desde ahí una aplicación
+//puede acceder a su info para darle sugerencias como en lapublicidad, o también puede
+//conocer el tipo de dispositivo y SO que usa el user para la versión de una aplicación que
 //vaya a instalar
 
-
 //imprimiendo cositas en la consola del navegador
-//window
+//window; -> acá puedo listar un montón de funciones del lenguaje
 
 //algunos elementos pertenecientes al window object
 
@@ -56,7 +56,7 @@ let host = window.location.host;
 console.log(ubicacion);
 console.log(host);
 
-//query -> en el caso que la url tenga una query ej http:// ..... ?s=query, enviando 
+//query -> en el caso que la url tenga una query ej http:// ..... ?s=query, enviando
 //parámetros por medio de get
 let query = window.location.search;
 console.log(query);

@@ -1,16 +1,16 @@
 //numeros con js
 
 const numero1 = 30,
-    numero2 = 20,
-    numero3 = 20.20,
-    numero4 = .1020,
-    numero5 = -5;
+  numero2 = 20,
+  numero3 = 20.2,
+  numero4 = 0.102,
+  numero5 = -5;
 
 console.log(numero1);
 
 let resultado;
 
-//suma 
+//suma
 resultado = numero1 + numero2;
 //resta
 resultado = numero1 - numero2;
@@ -37,9 +37,9 @@ resultado = Math.min(3, 6, 5, 9, 7, 8);
 //maximo entre varios numeros
 resultado = Math.max(3, 6, 5, 9, 7, 8);
 //numero aleatorio
-resultado = Math.random() //numero entre 0 y 1, decimal
+resultado = Math.random(); //numero entre 0 y 1, decimal
 resultado = 10 + 20 - 5; //se opera en orden de los signos
-resultado = (10 + 20) - 5; //primero se hace lo que esté entre parentesis
+resultado = 10 + 20 - 5; //primero se hace lo que esté entre parentesis
 console.log(resultado);
 
 /********/
@@ -48,7 +48,7 @@ let puntaje = 10;
 puntaje++; //incrementador
 puntaje--; //decrementador
 
-pupuntaje -= 20
+puntaje -= 20;
 puntaje += 9;
 
 console.log(puntaje);
