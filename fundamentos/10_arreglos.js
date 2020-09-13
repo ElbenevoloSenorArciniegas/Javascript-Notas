@@ -108,8 +108,28 @@ const resu2 = arr12.some((producto) => {
 //lo anterior pero mas simplificado
 const resu3 = arr12.some((producto) => producto.nombre === "03"); //devuelve v o f
 
-//findIndex -> para buscar el indice donde se encuentra cierto valor especificado dentro de un arreglo
+//findIndex -> para buscar el indice donde se encuentra cierto valor especificado dentro de un arreglo. solo sirve para hallar la primera ocurrencia
 //este metodo sirve tambienpara arreglos de objetos
 const indice_buscar = arr11.findIndex((mes) => mes === "abril");
 //para un arreglo de objetos
 const indice_buscar2 = arr12.findIndex((producto) => producto.nombre === "5");
+
+//.reduce -> una funcion reductora, toma una cnt de datos, unirlos, y entregar un resultado. ej, iterar y sumar todos los totales y entregar un rta
+
+//parametros: total es el valor acumulado anterior, que debe iniciar en cero, y producto, es el elemento por el que estoy iterando, y al cual voy a agregarle una adicion al total por medio de producto.precio
+//el '0' indica que el total debe iniciar en cero
+let suma_res = arr12.reduce((total, producto) => total + producto.precio, 0);
+
+//filter -> crea un nuevo arreglo basado en el parámetro que es evaluado
+//sirve por ejemplo, sacar los elementos de un array que cumplen cierta condicion
+
+//filter_res sería un array que devuelve los valores que cumplan la condicion del arrow function
+let filter_res = arr12.filter((producto) => producto.precio > 400);
+//el .filter puede ser util tambien para extraer elementos que no quiero que aparezcan en un array, se puede jugar con ese metodo
+
+//find ->  busca la primera aparicion de un elemento que se esté buscando en un arrar, basado en las condiciones que estan revisando
+let find_res = arr12.find((producto) => producto.nombre === "001");
+
+//.every -> todos los elementos de un arreglo deben cumplir esa condicion para que devuelva true
+//esto devolverá true si todos los elementos del array cumplen esa condicion
+let every_res = arr12.every((producto) => producto.precio > 400);
