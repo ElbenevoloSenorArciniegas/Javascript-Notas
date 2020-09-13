@@ -1,7 +1,7 @@
 //Crear un arreglo
 
 const numeros = [10, 20, 30, 40, 50];
-//console.log(numeros);
+console.log(numeros);
 
 //Arreglo de Strings (método alternativo)
 
@@ -87,4 +87,29 @@ const [primer, , tres] = meses; //extraer el primer y el tercer valor
 
 const [uno, dos, ...tre] = meses; //...tre contendrá un array desde la posicion 3 a la final. Esta sintaxis es muy usada en React
 
-//Otros metodos para arreglos
+//Otros metodos de arreglos
+
+const arr11 = ["enero", "febrero", "marzo"];
+
+const arr12 = [
+  { nombre: "01", precio: 600 },
+  { nombre: "02", precio: 800 },
+  { nombre: "03", precio: 1000 }
+];
+
+//buscar si un valor existe en el arreglo que no tiene clave-valor (includes - some). este metodo no sirve para arreglos de objetos
+const resu = arr11.includes("Enero"); //devuelve v o f
+
+//buscar si un valor existe dentro de un arreglo de objetos, aunque sirve em cualquier tipo de arreglo
+const resu2 = arr12.some((producto) => {
+  return producto.nombre === "03";
+}); //devuelve v o f
+
+//lo anterior pero mas simplificado
+const resu3 = arr12.some((producto) => producto.nombre === "03"); //devuelve v o f
+
+//findIndex -> para buscar el indice donde se encuentra cierto valor especificado dentro de un arreglo
+//este metodo sirve tambienpara arreglos de objetos
+const indice_buscar = arr11.findIndex((mes) => mes === "abril");
+//para un arreglo de objetos
+const indice_buscar2 = arr12.findIndex((producto) => producto.nombre === "5");
