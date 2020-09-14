@@ -5,55 +5,62 @@
 
 //document.querySelector('#submit-buscador').addEventListener('click', function(event){
 
-	//el prevent default detiene la ejecución por default de un evento, por ejemplo si es un link y que ese link redireccione a otro sitio
-	// al detener la acción por default, nos permite agregar acciones personalizadas
+//el prevent default detiene la ejecución por default de un evento, por ejemplo si es un link y que ese link redireccione a otro sitio
+// al detener la acción por default, nos permite agregar acciones personalizadas
 //	event.preventDefault();
 //	alert('buscando cursos');
 
-	//el event listener puede servir muy bien para validar datos antes de enviarlos al backend
+//el event listener puede servir muy bien para validar datos antes de enviarlos al backend
 //});
 
-function ejecutar_boton(event){
-	event.preventDefault();
-	//alert('Desde la función ejecutar botón');
+//uno de los event listeners mas usados, este event listener se ejecuta cuando termina de cargar todo el html y el codigo js que se ejecute afuera automaticamente
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Documento listo");
+});
 
-	let elemento;
+function ejecutar_boton(event) {
+  event.preventDefault();
+  //alert('Desde la función ejecutar botón');
 
-	//cosas que contiene ese event
-	//en este caso será un Mouse event
-	elemento = event;
+  let elemento;
 
-	//mostrar el elemento como etiqueta html y sus propiedades, y con ese target puedo acceder a todas las funciones del dom como sus hijos, padres, etc etc
-	elemento = event.target;
+  //cosas que contiene ese event
+  //en este caso será un Mouse event
+  elemento = event;
 
-	elemento = event.target.id;
-	elemento = event.target.className;
-	elemento = event.target.innerText;
+  //mostrar el elemento como etiqueta html y sus propiedades, y con ese target puedo acceder a todas las funciones del dom como sus hijos, padres, etc etc
+  elemento = event.target;
 
-	console.log(elemento);
+  elemento = event.target.id;
+  elemento = event.target.className;
+  elemento = event.target.innerText;
+
+  console.log(elemento);
 }
 
 //puedo agregar la ejecución de un event listener fuera de el
-document.querySelector('#submit-buscador').addEventListener('click', ejecutar_boton);
+document
+  .querySelector("#submit-buscador")
+  .addEventListener("click", ejecutar_boton);
 
+document
+  .querySelector("#encabezado")
+  .addEventListener("click", function (event) {
+    //como le hice clic a un texto, no tiene conigurado una accion por defecto, por lo tanto no necesito el eventDefault
 
-document.querySelector('#encabezado').addEventListener('click', function(event){
-	//como le hice clic a un texto, no tiene conigurado una accion por defecto, por lo tanto no necesito el eventDefault
+    console.log(event.target.innerText);
 
-	console.log(event.target.innerText);
-
-	//puedo modificar el DOM con los event listeners
-	event.target.innerText = 'Nuevo Encabezado';
-	event.target.innerText = 5 + 5;
-});
-
+    //puedo modificar el DOM con los event listeners
+    event.target.innerText = "Nuevo Encabezado";
+    event.target.innerText = 5 + 5;
+  });
 
 //otros eventos con el mouse
 
-const encabezado = document.querySelector('#encabezado');
-const enlaces = document.querySelectorAll('.enlace');
+const encabezado = document.querySelector("#encabezado");
+const enlaces = document.querySelectorAll(".enlace");
 
-const boton = document.querySelector('#vaciar-carrito');
+const boton = document.querySelector("#vaciar-carrito");
 
 //click
 //boton.addEventListener('click', obtener_evento);
@@ -82,15 +89,14 @@ const boton = document.querySelector('#vaciar-carrito');
 //mouse move -> se ejecuta el el event listener tantas veces como mueva el mouse dentro del elemento
 //encabezado.addEventListener('mousemove', obtener_evento);
 
-function obtener_evento(event){
-	console.log(`EVENTO: ${event.type}`);
+function obtener_evento(event) {
+  console.log(`EVENTO: ${event.type}`);
 }
-
 
 //Eventos para los inputs
 
 //#buscador es el id de un input
-const busqueda = document.querySelector('#buscador');
+const busqueda = document.querySelector("#buscador");
 
 //key down -> cada vez que escribo en un input, se ejecuta el event listener
 //este tipo de event listener es muy bueno para cuando haga búsquedas en directorios o países, etc
@@ -146,19 +152,19 @@ function obtener_evento_2(event){
 
 //como un efecto dominó. al hacer clic al algo, no solo ocurre el evento sobre ese elemento, sino sobre otros elementos seleccionaods
 
-const card = document.querySelector('.card');
-const info_curso = document.querySelector('.info-card');
-const agregar_carrito = document.querySelector('.agregar-carrito');
+const card = document.querySelector(".card");
+const info_curso = document.querySelector(".info-card");
+const agregar_carrito = document.querySelector(".agregar-carrito");
 
 //orden de padres a hijos
 //card > info_curso > agregar_carrito
 
-// cuando haga clic en agregar_al_carrito, como agregar_al_carrito a su vez está dentro 
-// del elemento info_curso, también se ejecuta el event listener de info_curso y como a su 
+// cuando haga clic en agregar_al_carrito, como agregar_al_carrito a su vez está dentro
+// del elemento info_curso, también se ejecuta el event listener de info_curso y como a su
 // vez info_curso está dentro de card, también se ejecutará el event listener de card.
 
-//hay que tener mucho cuidado con esto, porque depronto ocasione que se ejecuten event 
-//listeners que no quiera que se ejecuten al estar anidados dentro de otro elemento con 
+//hay que tener mucho cuidado con esto, porque depronto ocasione que se ejecuten event
+//listeners que no quiera que se ejecuten al estar anidados dentro de otro elemento con
 //event listeners
 
 //ahora el metodo event.stopPropagation(); me puede ayudar a no ocurra el event bubbling
@@ -182,31 +188,46 @@ agregar_carrito.addEventListener('click', function(event){
 
 */
 
-//Delegation -> es una forma de comprobar a qué elemento le estoy haciendo clic y ejecutar acciones de acuerdo a validaciones sobre ele elemtno
+//Delegation -> es una forma de comprobar a qué elemento le estoy haciendo clic y ejecutar acciones de acuerdo a validaciones sobre ele elemento
 
 //ej un evento para cuando haga clic en cualquier parte del documento, se elimine el elemento al que le hice click
 //ej 2 -> un evento de eliminar del carrito de compras cuando haga clic
-document.body.addEventListener('click', eliminar_elemento);
+document.body.addEventListener("click", eliminar_elemento);
 
-function eliminar_elemento(event){
-	event.preventDefault();
+function eliminar_elemento(event) {
+  event.preventDefault();
 
-	console.log('Click!');
-	console.log(event.target.classList); //listando todas las clases relacionadas a ese elemento
+  console.log("Click!");
+  console.log(event.target.classList); //listando todas las clases relacionadas a ese elemento
 
-	//buscar si un classList contiene un elemento
-	if(event.target.classList.contains('borrar-curso')){
-		console.log('si');
-		console.log(event.target.parentElement.parentElement.remove());
-	} else console.log('no');
+  //buscar si un classList contiene un elemento
+  if (event.target.classList.contains("borrar-curso")) {
+    console.log("si");
+    console.log(event.target.parentElement.parentElement.remove());
+  } else console.log("no");
 
-	// simulación de agregar cursos al carrito
-	if(event.target.classList.contains('agregar-carrito')){
-		console.log('Agregando curso');
+  // simulación de agregar cursos al carrito
+  if (event.target.classList.contains("agregar-carrito")) {
+    console.log("Agregando curso");
 
-		setTimeout(function(){
-			console.log('Curso agregado al carrito');
-		}, 3000);
-	}
-
+    setTimeout(function () {
+      console.log("Curso agregado al carrito");
+    }, 3000);
+  }
 }
+
+/**
+ * Eventos al hacer scroll con el mouse
+ * eventos que al hacer scroll muestran animaciones
+ * window.addEventListener('scroll', ()=>{
+ * 		console.log('scrolling');
+ * 		//para saber cuanto le he dado scroll en vertical
+ * 		const cnt_scroll_px = window.scrollY;
+ *
+ *    //para saber cuanto le he dado scroll en horizontal
+ * 		const cnt_scroll_py = window.scrollX;
+ * });
+ * TIPOS DE EVENTOS
+ * scroll -> cualquier scroll
+ *
+ */

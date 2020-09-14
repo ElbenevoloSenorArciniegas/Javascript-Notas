@@ -133,3 +133,20 @@ let find_res = arr12.find((producto) => producto.nombre === "001");
 //.every -> todos los elementos de un arreglo deben cumplir esa condicion para que devuelva true
 //esto devolverá true si todos los elementos del array cumplen esa condicion
 let every_res = arr12.every((producto) => producto.precio > 400);
+
+//.concat -> unir 2 arreglos
+const arr13 = ["abril", "mayo", "junio"];
+const concat_res = arr11.concat(arr13);
+//tambien puede usarsae para unir mas de dos arreglos, si le paso comas
+//si le paso un string ademas, va a tomar como si estuviera agregando nuevos elementos al arreglo
+const concat_res2 = arr11.concat(arr13, arr13, "otro mes");
+
+//otra forma de usar unir array, con el spread operator
+let arr_unir_meses = [...arr11, ...arr12, ...arr13];
+
+//en este caso va a tomar al elemento "otro mes" como un array y agregará cada caracter como si fuera un elemento del arreglo
+arr_unir_meses = [...arr11, ...arr12, ...arr13, ..."otro mes"];
+
+//rest o spread operator
+//agregado hace poco a js
+//cuando paso los 3 puntos, debo asegurarme de que sea a un array
