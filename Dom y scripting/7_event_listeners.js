@@ -167,7 +167,9 @@ const agregar_carrito = document.querySelector(".agregar-carrito");
 //listeners que no quiera que se ejecuten al estar anidados dentro de otro elemento con
 //event listeners
 
-//ahora el metodo event.stopPropagation(); me puede ayudar a no ocurra el event bubbling
+//FORMAS DE DETENER EL EVENT BUBBLING
+
+//1) ahora el metodo event.stopPropagation(); me puede ayudar a no ocurra el event bubbling
 
 /*
 
@@ -185,10 +187,47 @@ agregar_carrito.addEventListener('click', function(event){
 	event.stopPropagation();
 	console.log('click en agregar a carrito');
 });
-
 */
 
-//Delegation -> es una forma de comprobar a qué elemento le estoy haciendo clic y ejecutar acciones de acuerdo a validaciones sobre ele elemento
+/**2) Detener el event bubbling con delegation
+ *
+ *card.addEventListener('click', function(event){
+     console.log('clic en card');
+     console.log(event.target); // para saber a que etiqueta le estoy haciendo clic
+
+     //puedo validar a que clases o id relacionados, que se compartan con el elemento card, se le hace clic para identificar cuales elementos no deberían ser parte de ese event listener
+
+     if(event.target.classList.contains('titulo')){
+        console.log('diste clic en titulo');
+     }
+
+     if(event.target.classList.contains('precio')){
+      console.log('Diste clic en precio');
+     }
+  });
+ */
+
+/**3) Detener el event bubbling con una funcion
+ *
+ * ej cuando haga clic en una etiqueta, antes de eso puedo colocarle una propiedad para asignarle una funcion:
+ *
+ */
+const e = document.createElement("p");
+e.textContent = "hello world";
+e.onclick = nueva_funcion;
+
+function nueva_funcion() {
+  console.log("ejecutando nueva funcion");
+}
+
+const p = 1;
+
+//para pasarle parametros a ese onclick, le puedo pasar una funcion anonima
+e.onclick = function () {
+  console.log(p);
+};
+
+//Delegation -> es una forma de comprobar a qué elemento le estoy haciendo clic y ejecutar acciones de acuerdo a validaciones sobre el elemento
 
 //ej un evento para cuando haga clic en cualquier parte del documento, se elimine el elemento al que le hice click
 //ej 2 -> un evento de eliminar del carrito de compras cuando haga clic
@@ -229,5 +268,18 @@ function eliminar_elemento(event) {
  * });
  * TIPOS DE EVENTOS
  * scroll -> cualquier scroll
+ *
+ * Ejemplo para que un elemento del documento se modifique cuando al hacer scroll, la ventana muestra ese elemento
+ *
+ * const elemento = document.querySelector('.class');
+ *
+ * // este metodo tiene mucha info sobre la ubicacion en pixeles y tamaño
+ * const ubicacion = elemento.getBoundingClientRect();
+ *
+ * if(ubicacion.top < 100){
+ * 		console.log('El elemento está disponible, visible en la ventana');
+ * }else{
+ * 		console.log('Aun no, da mas scroll');
+ * }
  *
  */
