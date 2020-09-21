@@ -5,7 +5,7 @@ const numero = 2;
 numero.toString(); // este es un metodo (de la variable)
 
 //argumento y paráámetro
-//al llamar una función se pasan argumentos y al crear una funcióón, se le colocan parámetros
+//al llamar una función se pasan argumentos y al crear una función, se le colocan parámetros
 
 //Function declaration
 
