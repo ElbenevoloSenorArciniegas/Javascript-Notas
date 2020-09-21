@@ -35,3 +35,6 @@ Código asíncrono -> una línea puede ejecutarse antes de que la línea 1 se ha
 --------------------------------------------------------------------------------Netlify -> Para publicar proyectos web gratis (html, css, js). lo sube y te genera un dominio para visualizar el resultado. Puede ser muy util para compartir tu progreso en el trabajo o para presentar resultados de una prueba
 
 emailregex.com -> Herramienta util con expresiones regulares para la validación de emails
+
+
+High order functions -> funciones de alto nivel. Son como funciones que toman otras funciones
