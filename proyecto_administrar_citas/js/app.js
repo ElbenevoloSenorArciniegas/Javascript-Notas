@@ -12,6 +12,8 @@ const sintomas_input = document.querySelector('#sintomas');
 const formulario = document.querySelector('#nueva-cita');
 const contenedor_citas = document.querySelector('#citas');
 
+let editando;
+
 //clases
 
 class Citas {
@@ -27,6 +29,17 @@ class Citas {
     eliminar_cita(id){
         // recrear el listado pasando las citas con ids diferente al que se paso como argumento
         this.listado_espera = this.listado_espera.filter(cita => cita.id !== id);
+    }
+
+    editar_cita(cita_actualizada){
+        this.listado_espera = this.listado_espera.map(cita => cita.id === cita_actualizada.id ? cita_actualizada : cita);
+
+        // el .map devuelve un nuevo array con los elementos editados bajo condiciones
+        // para cada cita en el array, explicacion de ese ternario ->
+
+        //if(cita.id === cita_actualizada.id)
+        //cita = cita_actualizada
+        //else cita no se modifica
     }
 }
 
@@ -179,12 +192,31 @@ function agregar_nueva_cita(event){
 
         return;
     }
+    //revisar si es en modo de edición o se está agregando una nueva cita
+    if(editando){
+       
+        //mostrar mensaje
+        ui.imprimir_alerta('Editado correctamente');
 
-    //generar un id unico para la cita
-    cita_obj.id = Date.now();
+        //pasar el objeto de la cita a edición
+        administrador_citas.editar_cita({...cita_obj});
 
-    //agregando una nueva cita
-    administrador_citas.agregar_cita({...cita_obj}); // se pasa una copia de ese objeto cita, en vez de una referencia directa, para que el array de listado_espera no duplique los registros
+        //cambiar el texto del boton a modo "crear cita"
+        formulario.querySelector('button[type="submit"]').textContent = "Crear cita";
+
+        //quitar modo edicion 
+        editando = false;
+    }else{ //modo agregar nueva cita
+
+        //generar un id unico para la cita
+        cita_obj.id = Date.now();
+
+        //agregando una nueva cita
+        administrador_citas.agregar_cita({...cita_obj}); // se pasa una copia de ese objeto cita, en vez de una referencia directa, para que el array de listado_espera no duplique los registros
+
+        //mostrar mensaje
+        ui.imprimir_alerta('Se agregó correctamente');
+    }
 
     //reiniciar el formulario, limpiar campos
     formulario.reset();
@@ -220,8 +252,29 @@ function eliminar_cita(id){
 //cargar los datos y el modo de edición
 function cargar_edicion_citas(cita){
     
+    editando = true;
     //extraer la info del objeto de la cita
     const {id, mascota, propietario, telefono, fecha, hora, sintomas} = cita;
 
     //rellenar los inputs de formulario con la info de la cita
+    mascota_input.value = mascota;
+    propietario_input.value = propietario;
+    telefono_input.value = telefono;
+    fecha_input.value = fecha;
+    hora_input.value = hora;
+    sintomas_input.value = sintomas;
+
+    //llenar el objeto. porque se va a usar la misma funcionalidad de crear cita, eliminando registros antiguos y agregando nuevos
+    cita_obj.mascota = mascota;
+    cita_obj.propietario = hora;
+    cita_obj.telefono = propietario;
+    cita_obj.fecha =  fecha;
+    cita_obj.hora = hora;
+    cita_obj.sintomas = sintomas;
+    cita_obj.id = id;
+
+
+    //cambiar el texto del boton a modo edicion
+    formulario.querySelector('button[type="submit"]').textContent = "Guardar cambios";
+
 }
