@@ -1,15 +1,35 @@
 //Clases en Ecmascipt 6
 
 class Cliente {
+
+    /**propiedades de los atributos y metodos
+     * - public
+     * - protected
+     * - private -> agregado hace muy poco a Javascript. En Firefox, esto aún no está disponible -> https://caniuse.com/mdn-javascript_classes_private_class_fields
+     */
+   // para hacer que una propiedad de un ateributo sea privado
+    #nombre;
+
+    //getters y setters para las clases
+    setNombre(nombre){
+        this.#nombre = nombre;
+    }
+
+    getNombre(){
+        return this.#nombre;
+    }
+
     constructor(nombre, saldo) {
-        this.nombre = nombre;
-        // this.apellido = apellido;
+        this.#nombre = nombre;
+        this.apellido = apellido;
         this.saldo = saldo;
+
+        
     }
 
     //cualquier método de la clase ya va a ser parte del proto automáticamente
     imprimir_saldo() {
-        return `Hola ${this.nombre}. tu saldo es ${this.saldo}.`;
+        return `Hola ${this.#nombre}. tu saldo es ${this.saldo}.`;
     }
 
     /*tipo_cliente() {
@@ -33,7 +53,8 @@ class Cliente {
 }
 
 const maria = new Cliente('Maria', 'Perez', 10000);
-console.log(maria);
+//console.log(maria); // si hay atributos privados, esto botará error
+console.log(maria.getNombre()); // para acceder a atributos privados desde afuera de la clase
 console.log(maria.imprimir_saldo());
 //console.log(maria.tipo_cliente());
 //console.log(maria.retirar_saldo(2000));

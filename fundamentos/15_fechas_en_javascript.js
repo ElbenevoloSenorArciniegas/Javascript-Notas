@@ -1,4 +1,5 @@
 //En Js existe un objeto llamado date
+//los Date son datos de tipo objeto
 
 const dia_hoy = new Date();
 
@@ -29,7 +30,7 @@ console.log(dia_hoy.getMinutes());
 //obtener hora
 console.log(dia_hoy.getHours());
 
-//Milisegundos registrados desde 1970 hasta esta fecha
+//Milisegundos registrados desde 1 de enero de 1970 hasta esta fecha
 console.log(dia_hoy.getTime());
 
 //Modificar alguno de los anteriores parámetros
@@ -38,3 +39,6 @@ console.log(dia_hoy.getFullYear());
 
 //Conversion de fechas al formato local
 //fecha.toLocaleDateString('es-CO');
+
+//parecido a get time
+console.log(Date.now());
