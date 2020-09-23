@@ -1,3 +1,5 @@
+//iteradores mas recientes, de EC7 Y EC8
+
 const ciudades = ['Londres', 'New york', 'Madrid', 'Paris'];
 const ordenes = new Set([123, 231, 131, 102]);
 const datos = new Map();
