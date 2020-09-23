@@ -17,21 +17,21 @@ let editando;
 //clases
 
 class Citas {
-    constructor (){
+    constructor() {
         this.listado_espera = [];
     }
 
-    agregar_cita(cita){
+    agregar_cita(cita) {
         this.listado_espera = [...this.listado_espera, cita];
         //console.log(this.listado_espera);
     }
 
-    eliminar_cita(id){
+    eliminar_cita(id) {
         // recrear el listado pasando las citas con ids diferente al que se paso como argumento
         this.listado_espera = this.listado_espera.filter(cita => cita.id !== id);
     }
 
-    editar_cita(cita_actualizada){
+    editar_cita(cita_actualizada) {
         this.listado_espera = this.listado_espera.map(cita => cita.id === cita_actualizada.id ? cita_actualizada : cita);
 
         // el .map devuelve un nuevo array con los elementos editados bajo condiciones
@@ -44,12 +44,12 @@ class Citas {
 }
 
 class UI {
-    imprimir_alerta(mensaje, tipo){
+    imprimir_alerta(mensaje, tipo) {
         const div_mensaje = document.createElement('div');
         div_mensaje.classList.add('text-center', 'alert', 'd-block', 'col-12');
 
         //agregar clase en base al tipo de error
-        if(tipo === 'error') div_mensaje.classList.add('alert-danger');
+        if (tipo === 'error') div_mensaje.classList.add('alert-danger');
         else div_mensaje.classList.add('alert-success');
 
 
@@ -60,13 +60,13 @@ class UI {
         document.querySelector('#contenido').insertBefore(div_mensaje, document.querySelector('.agregar-cita'));
 
         //quitar alerta despues de algunos segundos
-        setTimeout (() => {
+        setTimeout(() => {
             div_mensaje.remove();
         }, 5000);
     }
 
-    imprimir_citas({listado_espera}){
-        
+    imprimir_citas({ listado_espera }) {
+
         // Se puede hacer destructuring en los parámetros de la funcion, para solo extraer las propiedades de ese objeto que estoy pasando como argumento, solo las que se vana  usar
         //const {citas} = citas;
 
@@ -74,7 +74,7 @@ class UI {
 
         listado_espera.forEach(cita => {
             //extraer la info del objeto de la cita
-            const {id, mascota, propietario, telefono, fecha, hora, sintomas} = cita;
+            const { id, mascota, propietario, telefono, fecha, hora, sintomas } = cita;
 
             const div_cita = document.createElement('div');
             div_cita.classList.add('cita', 'p-3');
@@ -128,11 +128,11 @@ class UI {
             //agregando las citas al HTML
             contenedor_citas.appendChild(div_cita);
         });
-       
+
     }
 
-    limpiar_HTML(){
-        while(contenedor_citas.firstChild){
+    limpiar_HTML() {
+        while (contenedor_citas.firstChild) {
             contenedor_citas.removeChild(contenedor_citas.firstChild);
         }
     }
@@ -146,16 +146,16 @@ const administrador_citas = new Citas();
 
 event_listeners();
 
-function event_listeners(){
-   //  mascota_input.addEventListener('change', datos_cita);
-     mascota_input.addEventListener('input', datos_cita);
-     propietario_input.addEventListener('input', datos_cita);
-     telefono_input.addEventListener('input', datos_cita);
-     fecha_input.addEventListener('input', datos_cita);
-     hora_input.addEventListener('input', datos_cita);
-     sintomas_input.addEventListener('input', datos_cita);
+function event_listeners() {
+    //  mascota_input.addEventListener('change', datos_cita);
+    mascota_input.addEventListener('input', datos_cita);
+    propietario_input.addEventListener('input', datos_cita);
+    telefono_input.addEventListener('input', datos_cita);
+    fecha_input.addEventListener('input', datos_cita);
+    hora_input.addEventListener('input', datos_cita);
+    sintomas_input.addEventListener('input', datos_cita);
 
-     formulario.addEventListener('submit', agregar_nueva_cita);
+    formulario.addEventListener('submit', agregar_nueva_cita);
 }
 
 //obj con la info que el usuario registra de la cita
@@ -168,51 +168,51 @@ const cita_obj = {
     sintomas: ''
 };
 
-function datos_cita(event){
-  //event.target.value
-  //el target es para acceder a todos los atributos de una etiqueta html (como el id, class, el name, el value, etc)
+function datos_cita(event) {
+    //event.target.value
+    //el target es para acceder a todos los atributos de una etiqueta html (como el id, class, el name, el value, etc)
 
-  //editando sobre el objeto
-  cita_obj[event.target.name] = event.target.value;
+    //editando sobre el objeto
+    cita_obj[event.target.name] = event.target.value;
 
 }
 
 // valida y agrega una cita a la clase Cita
-function agregar_nueva_cita(event){
+function agregar_nueva_cita(event) {
     event.preventDefault();
 
     //extraer la info del objeto de la cita
-    const {mascota, propietario, telefono, fecha, hora, sintomas} = cita_obj;
+    const { mascota, propietario, telefono, fecha, hora, sintomas } = cita_obj;
 
     //validando campos vacios
-    if(mascota === '' || propietario === '' || telefono === '' || fecha === '' || hora === '' || sintomas === ''){
+    if (mascota === '' || propietario === '' || telefono === '' || fecha === '' || hora === '' || sintomas === '') {
 
         //mostrar en user interface 
-        ui.imprimir_alerta('todos los campos son obligatorios', 'error'); 
+        ui.imprimir_alerta('todos los campos son obligatorios', 'error');
 
         return;
     }
     //revisar si es en modo de edición o se está agregando una nueva cita
-    if(editando){
-       
+    if (editando) {
+
         //mostrar mensaje
         ui.imprimir_alerta('Editado correctamente');
 
         //pasar el objeto de la cita a edición
-        administrador_citas.editar_cita({...cita_obj});
+        administrador_citas.editar_cita({...cita_obj });
 
         //cambiar el texto del boton a modo "crear cita"
         formulario.querySelector('button[type="submit"]').textContent = "Crear cita";
 
         //quitar modo edicion 
         editando = false;
-    }else{ //modo agregar nueva cita
+    } else { //modo agregar nueva cita
 
         //generar un id unico para la cita
         cita_obj.id = Date.now();
 
         //agregando una nueva cita
-        administrador_citas.agregar_cita({...cita_obj}); // se pasa una copia de ese objeto cita, en vez de una referencia directa, para que el array de listado_espera no duplique los registros
+        administrador_citas.agregar_cita({...cita_obj }); // se pasa una copia de ese objeto cita, en vez de una referencia directa, para que el array de listado_espera no duplique los registros
 
         //mostrar mensaje
         ui.imprimir_alerta('Se agregó correctamente');
@@ -228,17 +228,17 @@ function agregar_nueva_cita(event){
     ui.imprimir_citas(administrador_citas);
 }
 
-function reiniciar_objeto(){
-        cita_obj.mascota = '';
-        cita_obj.propietario = '';
-        cita_obj.telefono = '';
-        cita_obj.fecha =  '';
-        cita_obj.hora = '';
-        cita_obj.sintomas = '';
+function reiniciar_objeto() {
+    cita_obj.mascota = '';
+    cita_obj.propietario = '';
+    cita_obj.telefono = '';
+    cita_obj.fecha = '';
+    cita_obj.hora = '';
+    cita_obj.sintomas = '';
 }
 
 //eliminando la cita del listasdo de la clase Cita
-function eliminar_cita(id){
+function eliminar_cita(id) {
     //eliminar la cita 
     administrador_citas.eliminar_cita(id);
 
@@ -250,11 +250,11 @@ function eliminar_cita(id){
 }
 
 //cargar los datos y el modo de edición
-function cargar_edicion_citas(cita){
-    
+function cargar_edicion_citas(cita) {
+
     editando = true;
     //extraer la info del objeto de la cita
-    const {id, mascota, propietario, telefono, fecha, hora, sintomas} = cita;
+    const { id, mascota, propietario, telefono, fecha, hora, sintomas } = cita;
 
     //rellenar los inputs de formulario con la info de la cita
     mascota_input.value = mascota;
@@ -268,7 +268,7 @@ function cargar_edicion_citas(cita){
     cita_obj.mascota = mascota;
     cita_obj.propietario = hora;
     cita_obj.telefono = propietario;
-    cita_obj.fecha =  fecha;
+    cita_obj.fecha = fecha;
     cita_obj.hora = hora;
     cita_obj.sintomas = sintomas;
     cita_obj.id = id;
