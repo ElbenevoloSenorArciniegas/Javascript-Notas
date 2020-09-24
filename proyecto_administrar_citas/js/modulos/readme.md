@@ -1,1 +1,1 @@
-Esta es la version de módulos de js para el proyecto de citas
+Esta es la version de módulos de js, para el proyecto de citas
