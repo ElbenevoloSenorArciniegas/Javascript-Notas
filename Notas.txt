@@ -40,3 +40,5 @@ emailregex.com -> Herramienta util con expresiones regulares para la validación
 High order functions -> funciones de alto nivel. Son como funciones que toman otras funciones
 
 Hero icons -> para agregar íconos bonitos https://heroicons.dev/
+
+Sweet alert -> una librería para usar alertas visualmente bonitas

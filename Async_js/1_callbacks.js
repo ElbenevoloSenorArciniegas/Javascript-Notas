@@ -40,3 +40,7 @@ function mostrar_paises() {
 agregar_pais('Chile', mostrar_paises);
 
 mostrar_paises(); // esta funcion se ejecutará primero
+
+
+
+//Callback Hell
